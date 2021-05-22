@@ -4,6 +4,15 @@ The Tensor Basis Neural Network (TBNN) package provides an interface for buildin
 testing neural networks for systems that have known invariance properties.  This package is intended
 as a useful reference and starting point for researchers hoping to develop data-driven constitutive models
 for systems with known invariance properties.  It was developed at Sandia National Laboratories with funding from the Sandia Laboratory Directed Research and Development program.
+## Personal modifications
+Dirty translation to python3 - mainly error tracking.
+Had to modify lasange (ver.: 0.1) where I replaced downsample with pool, otherwise left untouched.
+Other package versions
+* theano 1.0.5
+* matplotlib 3.4.1
+* numpy 1.19.5
+* scipy 1.6.2
+
 
 ## Copyright and License
 

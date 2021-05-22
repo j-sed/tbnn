@@ -9,9 +9,14 @@
 
 from unittest import TestCase
 from numpy.random import rand
+import os
+import sys
+cwd = os.getcwd()
+sys.path.append(cwd + "/../")
 
 import tbnn
-
+import os
+cwd = os.getcwd()
 ###################################################
 # Tests the consistency and basic functionality of
 # the TBNN on a random set of data.  Does not
@@ -30,7 +35,7 @@ class TestTbnn(TestCase):
 
         # number of elements will be basis_dim X basis_dim
         basis_elem_size = basis_dim * basis_dim
-
+        print("working 1")
         x = rand(num_points, num_features)                  # random input data
         y = rand(num_points, basis_elem_size)               # random output data
         tb = rand(num_points, num_basis, basis_elem_size)   # random tensor basis
@@ -49,10 +54,10 @@ class TestTbnn(TestCase):
         y_test = rand(num_test, basis_elem_size)
         tb_test = rand(num_test, num_basis, basis_elem_size)
         y_predict = my_tbnn.predict(x_test, tb_test)
-
+        print("working 2")
         # check the error
         rmse = my_tbnn.rmse_score(y_test, y_predict)
-        print "RMSE of tests case:", rmse
+        print ("RMSE of tests case:", rmse)
         self.assertTrue(rmse > 0.0)
 
 

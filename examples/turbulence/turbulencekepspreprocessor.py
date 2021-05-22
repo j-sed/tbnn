@@ -1,7 +1,11 @@
 import numpy as np
-
+import os
+import sys
+cwd = os.getcwd()
+sys.path.append(cwd + "/../../")
 from tbnn import DataProcessor
-
+import os
+cwd = os.getcwd()
 """
 Copyright 2017 Sandia Corporation. Under the terms of Contract DE-AC04-94AL85000,
 there is a non-exclusive license for use of this work by or on behalf of the U.S. Government.
@@ -33,7 +37,7 @@ class TurbulenceKEpsDataProcessor(DataProcessor):
         tke_eps = tke / eps
         Sij = np.zeros((num_points, 3, 3))
         Rij = np.zeros((num_points, 3, 3))
-        for i in xrange(num_points):
+        for i in range(num_points):
             Sij[i, :, :] = tke_eps[i] * 0.5 * (grad_u[i, :, :] + np.transpose(grad_u[i, :, :]))
             Rij[i, :, :] = tke_eps[i] * 0.5 * (grad_u[i, :, :] - np.transpose(grad_u[i, :, :]))
 
@@ -211,8 +215,8 @@ class TurbulenceKEpsDataProcessor(DataProcessor):
         # Flatten into num_points X 9 array
         num_points = sij.shape[0]
         rans_anisotropy = np.zeros((num_points, 9))
-        for i in xrange(3):
-            for j in xrange(3):
+        for i in range(3):
+            for j in range(3):
                 rans_anisotropy[:, i*3+j] = rans_anisotropy_matrix[:, i, j]
         return rans_anisotropy
 
